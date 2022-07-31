@@ -6,11 +6,21 @@ import axios from "../../axios";
 function ReleaseAfter2010() {
   const [moviesList, setMoviesList] = useState([]);
   useEffect(() => {
-    
-    axios.get("/movies-2010").then((response) => {
-      //console.log(response.data.data);
-      setMoviesList(response.data.data);
-    });
+    axios
+      .get("/movies-2010", {
+        headers: {
+          "auth-token":
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InBoaW5haGFzIiwiaWF0IjoxNjU5MjYxNzUwfQ.9jhk57xRs6L1EEcXOBedLg-1XcZ0V4BVXAcgMuEkauA",
+        },
+      })
+      .then((response) => {
+        //console.log(response.data.data);
+        setMoviesList(response.data.data);
+      })
+      .catch((err) => {
+        console.log(err.response.data);
+        window.alert(err.response.data.message);
+      });
   }, []);
 
   return (

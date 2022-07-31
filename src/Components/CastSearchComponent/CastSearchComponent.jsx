@@ -13,7 +13,10 @@ function CastSearchComponent() {
     if (actor1 != null && actor2 != null) {
       console.log(actor2, actor1);
       axios
-        .post("/movies-cast-search", { actor1: actor1, actor2: actor2 })
+        .post("/movies-cast-search", { actor1: actor1, actor2: actor2 },{headers: {
+          "auth-token":
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InBoaW5haGFzIiwiaWF0IjoxNjU5MjYxNzUwfQ.9jhk57xRs6L1EEcXOBedLg-1XcZ0V4BVXAcgMuEkauA",
+        }})
         .then((response) => {
           //console.log(response.data.data);
           setMoviesList(response.data.data);
@@ -21,7 +24,13 @@ function CastSearchComponent() {
         .catch((err) => {
           //console.log(err.response.data);
           //setErrMessage(err.response.data)
-          setErr(true);
+          if(err.response.data.message){
+            window.alert(err.response.data.message);
+          }
+          else{
+            setErr(true);
+          }
+        
         });
     } else {
       window.alert("Please fill both input fields");
