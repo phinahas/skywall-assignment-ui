@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import CastSearchComponent from "../Components/CastSearchComponent/CastSearchComponent";
 import RatingResultComponent from "../Components/RatingResultComponent/RatingResultComponent";
 import ReleaseAfter2010 from "../Components/ReleaseAfter2010/ReleaseAfter2010";
 import "./IndexPageStyle.css";
@@ -45,6 +46,7 @@ function IndexPage() {
       <hr />
       <div>{releaseButton ? <ReleaseAfter2010 /> : null}
       {ratingButton ? <RatingResultComponent/> : null}
+      {castButton ? <CastSearchComponent/> : null}
 
       
       
