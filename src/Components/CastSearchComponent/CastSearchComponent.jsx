@@ -15,11 +15,11 @@ function CastSearchComponent() {
       axios
         .post("/movies-cast-search", { actor1: actor1, actor2: actor2 })
         .then((response) => {
-          console.log(response.data.data);
+          //console.log(response.data.data);
           setMoviesList(response.data.data);
         })
         .catch((err) => {
-          console.log(err.response.data);
+          //console.log(err.response.data);
           //setErrMessage(err.response.data)
           setErr(true);
         });

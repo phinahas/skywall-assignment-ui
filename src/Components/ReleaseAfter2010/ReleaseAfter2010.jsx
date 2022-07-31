@@ -6,7 +6,7 @@ import axios from "../../axios";
 function ReleaseAfter2010() {
   const [moviesList, setMoviesList] = useState([]);
   useEffect(() => {
-    console.log("Hi");
+    
     axios.get("/movies-2010").then((response) => {
       //console.log(response.data.data);
       setMoviesList(response.data.data);
